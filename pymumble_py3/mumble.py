@@ -176,7 +176,7 @@ class Mumble(threading.Thread):
         last_ping = time.time()  # keep track of the last ping time
 
         # loop as long as the connection and the parent thread are alive
-        while self.connected not in (PYMUMBLE_CONN_STATE_NOT_CONNECTED, PYMUMBLE_CONN_STATE_FAILED) and self.parent_thread.is_alive():
+        while self.connected not in (PYMUMBLE_CONN_STATE_NOT_CONNECTED, PYMUMBLE_CONN_STATE_FAILED):
             if last_ping + PYMUMBLE_PING_DELAY <= time.time():  # when it is time, send the ping
                 self.ping()
                 last_ping = time.time()
